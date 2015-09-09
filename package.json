@@ -1,7 +1,7 @@
 {
   "name": "browser-store",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A Shim for Handling Various Forms of Browser Storage",
   "directories": {
     "doc": "doc",
     "test": "tests"
