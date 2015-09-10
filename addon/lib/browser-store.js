@@ -1,7 +1,7 @@
 export default {
   tokenStoreName: 'token',
 
-  sessionName: 'es_session',
+  sessionName: '_es_session',
 
   setAPIToken(token) {
     Cookies.set(this.tokenStoreName, token, { path: '/' });
