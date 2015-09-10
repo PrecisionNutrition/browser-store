@@ -4,6 +4,13 @@
 module.exports = {
   name: 'browser-store',
 
+  afterInstall: function() {
+    return this.addBowerPackagesToProject([
+      { name: 'js-cookie', target: '~2.0.3' },
+      { name: 'amplify', target: '~1.1.2' }
+    ]);
+  },
+
   included: function(app) {
     this._super.included(app);
 
