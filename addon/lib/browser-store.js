@@ -1,6 +1,8 @@
 export default {
   tokenStoreName: 'token',
 
+  sessionName: 'es_session',
+
   setAPIToken(token) {
     Cookies.set(this.tokenStoreName, token, { path: '/' });
   },
@@ -11,6 +13,10 @@ export default {
 
   removeAPIToken() {
     Cookies.remove(this.tokenStoreName);
+  },
+
+  removeSessionToken() {
+    Cookies.remove(this.sessionName);
   },
 
   setItem(name, value) {
