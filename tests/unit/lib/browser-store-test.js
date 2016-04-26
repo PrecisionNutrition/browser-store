@@ -1,5 +1,6 @@
 import BrowserStore from 'browser-store/lib/browser-store';
 import { module, test } from 'qunit';
+import Cookies from 'js-cookies';
 
 module('BrowserStore');
 
