@@ -5,5 +5,5 @@
     return { 'default': self['Cookies'] };
   }
 
-  define('js-cookies', [], vendorModule);
+  define('js-cookie', [], vendorModule);
 })();

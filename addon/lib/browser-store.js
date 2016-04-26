@@ -1,4 +1,4 @@
-import Cookies from 'js-cookies';
+import Cookies from 'js-cookie';
 
 export default {
   tokenStoreName: 'token',
