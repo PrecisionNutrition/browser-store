@@ -1,7 +1,7 @@
 {
   "name": "browser-store",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A Shim for Handling Various Forms of Browser Storage",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/PrecisionNutrition/browser-store.git",
   "engines": {
     "node": ">= 0.10.0"
   },
