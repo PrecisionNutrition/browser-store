@@ -2,7 +2,7 @@
   "name": "browser-store",
   "dependencies": {
     "amplify": "~1.1.2",
-    "js-cookie": "~2.0.3",
+    "js-cookie": "~2.1.1",
     "ember": "~2.5.0",
     "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",

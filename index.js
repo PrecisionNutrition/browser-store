@@ -6,7 +6,7 @@ module.exports = {
 
   afterInstall: function() {
     return this.addBowerPackagesToProject([
-      { name: 'js-cookie', target: '~2.0.3' },
+      { name: 'js-cookie', target: '~2.1.1' },
       { name: 'amplify', target: '~1.1.2' }
     ]);
   },
