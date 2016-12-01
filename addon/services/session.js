@@ -12,8 +12,10 @@ export default Service.extend({
       return BrowserStore.getAPIToken();
     },
 
-    set(token) {
-      return BrowserStore.setAPIToken(token);
+    set(_, token) {
+      BrowserStore.setAPIToken(token);
+
+      return token;
     },
   }),
 });

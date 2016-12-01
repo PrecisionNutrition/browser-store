@@ -1,12 +1,29 @@
 import { moduleFor, test } from 'ember-qunit';
+import BrowserStore from 'browser-store/lib/browser-store';
 
 moduleFor('service:session', 'Unit | Service | session', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+  afterEach() {
+    BrowserStore.removeAPIToken();
+  },
 });
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
+test('token can be retrieved', function(assert) {
+  BrowserStore.setAPIToken('MY FAKE TOKEN');
+
   let service = this.subject();
-  assert.ok(service);
+
+  let token = service.get('token');
+
+  assert.equal(token, 'MY FAKE TOKEN');
+});
+
+test('token can be set', function(assert) {
+  let service = this.subject();
+
+  service.set('token', 'MY FAKE TOKEN');
+
+  let token = service.get('token');
+
+  assert.equal(token, 'MY FAKE TOKEN');
+  assert.equal(BrowserStore.getAPIToken(), 'MY FAKE TOKEN');
 });
