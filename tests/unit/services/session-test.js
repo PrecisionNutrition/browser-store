@@ -24,6 +24,7 @@ test('token can be set', function(assert) {
 
   let token = service.get('token');
 
-  assert.equal(token, 'MY FAKE TOKEN');
-  assert.equal(BrowserStore.getAPIToken(), 'MY FAKE TOKEN');
+  assert.equal(token, 'MY FAKE TOKEN', 'can set token');
+
+  assert.equal(BrowserStore.getAPIToken(), 'MY FAKE TOKEN', 'setting trickles backward');
 });
