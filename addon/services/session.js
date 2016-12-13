@@ -18,4 +18,16 @@ export default Service.extend({
       return token;
     },
   }),
+
+  csrfToken: computed({
+    get() {
+      return BrowserStore.getItem('csrf-token');
+    },
+
+    set(_, newCsrfToken) {
+      BrowserStore.setItem('csrf-token', newCsrfToken);
+
+      return newCsrfToken;
+    },
+  }),
 });
