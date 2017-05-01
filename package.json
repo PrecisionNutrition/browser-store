@@ -1,5 +1,5 @@
 {
-  "name": "browser-store",
+  "name": "@precision-nutrition/browser-store",
   "version": "1.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
@@ -8,10 +8,12 @@
   "license": "MIT",
   "author": "",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrecisionNutrition/browser-store.git"
+  },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
@@ -45,5 +47,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/PrecisionNutrition/browser-store/issues"
+  },
+  "homepage": "https://github.com/PrecisionNutrition/browser-store#readme"
 }
