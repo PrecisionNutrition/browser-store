@@ -1,3 +1,1 @@
-import BrowserStore from 'browser-store/lib/browser-store';
-
-export default BrowserStore;
+export { default } from 'browser-store/lib/browser-store';

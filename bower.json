@@ -1,6 +1,5 @@
 {
   "name": "browser-store",
   "dependencies": {
-    "amplify": "~1.1.2"
   }
 }
