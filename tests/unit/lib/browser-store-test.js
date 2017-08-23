@@ -4,33 +4,6 @@ import Cookies from 'js-cookie';
 
 module('BrowserStore');
 
-test('#setAPIToken', function(assert) {
-  let expectedToken = 'myToken';
-
-  BrowserStore.setAPIToken(expectedToken);
-
-  let token = Cookies.get(BrowserStore.tokenStoreName);
-
-  assert.equal(token, expectedToken, 'should set the API token');
-});
-
-test('#getAPIToken', function(assert) {
-  let expectedToken = 'myToken';
-
-  BrowserStore.setAPIToken(expectedToken);
-
-  let token = BrowserStore.getAPIToken();
-
-  assert.equal(token, expectedToken, 'should retrieve the set API token');
-});
-
-test('#removeAPIToken', function(assert) {
-  BrowserStore.setAPIToken('blah');
-  BrowserStore.removeAPIToken();
-
-  assert.ok(!BrowserStore.getAPIToken(), 'should remove the set API token');
-});
-
 test('#removeSessionToken', function(assert) {
   Cookies.set(BrowserStore.sessionName, 'hadfklasdjfkj');
   BrowserStore.removeSessionToken();

@@ -1,21 +1,7 @@
 import Cookies from 'js-cookie';
 
 export default {
-  tokenStoreName: 'token',
-
   sessionName: '_es_session',
-
-  setAPIToken(token) {
-    Cookies.set(this.tokenStoreName, token, { path: '/' });
-  },
-
-  getAPIToken() {
-    return Cookies.get(this.tokenStoreName);
-  },
-
-  removeAPIToken() {
-    Cookies.remove(this.tokenStoreName);
-  },
 
   removeSessionToken() {
     Cookies.remove(this.sessionName);
