@@ -1,11 +1,5 @@
-import Cookies from 'js-cookie';
-
 export default {
   sessionName: '_es_session',
-
-  removeSessionToken() {
-    Cookies.remove(this.sessionName);
-  },
 
   setItem(name, value) {
     return amplify.store(name, value);

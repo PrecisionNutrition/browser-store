@@ -1,7 +1,6 @@
 {
   "name": "browser-store",
   "dependencies": {
-    "amplify": "~1.1.2",
-    "js-cookie": "~2.1.1"
+    "amplify": "~1.1.2"
   }
 }

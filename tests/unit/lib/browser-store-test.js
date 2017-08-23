@@ -1,15 +1,7 @@
 import BrowserStore from 'browser-store/lib/browser-store';
 import { module, test } from 'qunit';
-import Cookies from 'js-cookie';
 
 module('BrowserStore');
-
-test('#removeSessionToken', function(assert) {
-  Cookies.set(BrowserStore.sessionName, 'hadfklasdjfkj');
-  BrowserStore.removeSessionToken();
-
-  assert.ok(!Cookies.get(BrowserStore.sessionName), 'should remove the session token');
-});
 
 test('#setItem', function(assert) {
   let key = 'myKey';
