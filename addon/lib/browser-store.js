@@ -1,24 +1,25 @@
+import Storage from '../services/storage';
+
+const storage = Storage.create();
+
 export default {
   sessionName: '_es_session',
 
   setItem(name, value) {
-    return amplify.store(name, value);
+    storage.write(name, value);
+
+    return storage.read(name);
   },
 
   getItem(name) {
-    return amplify.store(name);
+    return storage.read(name);
   },
 
   removeItem(name) {
-    return amplify.store(name, null);
+    return storage.del(name);
   },
 
   clearStore() {
-    let keys = Object.keys(amplify.store());
-
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i];
-      amplify.store(key, null);
-    }
-  }
+    storage.clear();
+  },
 };

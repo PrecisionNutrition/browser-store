@@ -1,5 +1,8 @@
 import BrowserStore from 'browser-store/lib/browser-store';
 import { module, test } from 'qunit';
+import Storage from 'dummy/services/storage';
+
+const storage = Storage.create();
 
 module('BrowserStore');
 
@@ -9,7 +12,7 @@ test('#setItem', function(assert) {
 
   BrowserStore.setItem(key, expectedValue);
 
-  let actualValue = amplify.store(key);
+  let actualValue = storage.read(key);
 
   assert.equal(actualValue, expectedValue, 'should set a value into the browser localStorage');
 });
@@ -18,7 +21,7 @@ test('#getItem', function(assert) {
   let key = 'myKey';
   let expectedValue = 'myValue';
 
-  amplify.store(key, expectedValue);
+  storage.write(key, expectedValue);
 
   let actualValue = BrowserStore.getItem(key);
 
