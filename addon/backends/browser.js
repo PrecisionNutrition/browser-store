@@ -12,10 +12,12 @@ export default class Browser {
     let item = this._store.getItem(oldAmplifyItemKey);
 
     if (item) {
-      this.removeItem(oldAmplifyItemKey);
-      this.setItem(key, item);
+      let { data } = JSON.parse(item);
 
-      return item;
+      this.removeItem(oldAmplifyItemKey);
+      this.setItem(key, data);
+
+      return data;
     } else {
       return this._store.getItem(key);
     }

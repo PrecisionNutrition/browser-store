@@ -40,7 +40,7 @@ test('retrieving an item previously stored by amplify', function(assert) {
   let key = 'foo';
   let storedValue = 'bar';
 
-  window.localStorage.setItem(`__amplify__${key}`, storedValue);
+  window.localStorage.setItem(`__amplify__${key}`, JSON.stringify({ data: storedValue }));
 
   let value = subject.getItem(key);
 
