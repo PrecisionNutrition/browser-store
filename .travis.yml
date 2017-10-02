@@ -12,8 +12,7 @@ addons:
   chrome: stable
 
 cache:
-  directories:
-    - $HOME/.npm
+  yarn: true
 
 env:
   # we recommend new addons test the current and previous LTS
@@ -30,14 +29,8 @@ matrix:
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
-before_install:
-  - npm config set spin false
-  - npm install -g npm@4 bower
-  - npm --version
-
 install:
-  - npm install
-  - bower install
+  - yarn install
 
 script:
   # Usually, it's ok to finish the test scenario without reverting
