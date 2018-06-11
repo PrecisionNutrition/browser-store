@@ -1,10 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Service from '@ember/service';
 import getAndInitializeBackend from '../utils/get-and-initialize-backend';
-
-const {
-  computed,
-  Service,
-} = Ember;
 
 export default Service.extend({
   backend: computed(function() {
