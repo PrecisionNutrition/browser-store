@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  name: 'browser-store'
+  name: '@precision-nutrition/browser-store'
 };
