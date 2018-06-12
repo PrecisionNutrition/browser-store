@@ -1,1 +1,1 @@
-export { default } from 'browser-store/services/storage';
+export { default } from '@precision-nutrition/browser-store/services/storage';

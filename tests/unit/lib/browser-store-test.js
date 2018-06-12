@@ -1,4 +1,4 @@
-import BrowserStore from 'browser-store/lib/browser-store';
+import BrowserStore from '@precision-nutrition/browser-store/lib/browser-store';
 import { module, test } from 'qunit';
 import Storage from 'dummy/services/storage';
 
