@@ -10,7 +10,6 @@ defaults: &defaults
     - image: circleci/node:8-browsers
       environment:
         JOBS: 2
-        BROWSERSTACK_USERNAME: pntechteam1
 
   working_directory: ~/repo
 
@@ -37,21 +36,19 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ .Branch }}--{{ checksum "package-lock.lock" }}
+            - v1-dependencies-{{ .Branch }}--{{ checksum "package-lock.json" }}
             - v1-dependencies-{{ .Branch }}-
             - v1-dependencies-
 
       - run:
           name: 'Install dependencies'
           command: |
-            npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-
             npm config set spin false
 
             npm install
 
       - save_cache:
-          key: v1-dependencies-{{ .Branch }}--{{ checksum "package-lock.lock" }}
+          key: v1-dependencies-{{ .Branch }}--{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
 
