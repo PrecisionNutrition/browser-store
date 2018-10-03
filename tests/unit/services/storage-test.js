@@ -1,94 +1,96 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:storage', 'Unit | Service | storage', {
-});
+module('Unit | Service | storage', function(hooks) {
+  setupTest(hooks);
 
-test('backend is initialized', function(assert) {
-  let service = this.subject();
+  test('backend is initialized', function(assert) {
+    let service = this.owner.lookup('service:storage');
 
-  assert.ok(
-    !!service.get('backend'),
-  );
-});
-
-test('backend cannot be written to', function(assert) {
-  let service = this.subject();
-
-  assert.throws(function() {
-    service.set('backend', 'foo');
+    assert.ok(
+      !!service.get('backend'),
+    );
   });
-});
 
-test('backend can be written to', function(assert) {
-  let service = this.subject();
-  let backend = service.get('backend');
+  test('backend cannot be written to', function(assert) {
+    let service = this.owner.lookup('service:storage');
 
-  try {
-    service.write('foo', 'bar');
+    assert.throws(function() {
+      service.set('backend', 'foo');
+    });
+  });
 
-    assert.equal(
-      backend.getItem('foo'),
-      'bar'
-    );
-  } finally {
-    backend.clear();
-  }
-});
+  test('backend can be written to', function(assert) {
+    let service = this.owner.lookup('service:storage');
+    let backend = service.get('backend');
 
-test('backend can be read from', function(assert) {
-  let service = this.subject();
-  let backend = service.get('backend');
+    try {
+      service.write('foo', 'bar');
 
-  try {
-    service.write('foo', 'bar');
+      assert.equal(
+        backend.getItem('foo'),
+        'bar'
+      );
+    } finally {
+      backend.clear();
+    }
+  });
 
-    let value = service.read('foo');
+  test('backend can be read from', function(assert) {
+    let service = this.owner.lookup('service:storage');
+    let backend = service.get('backend');
 
-    assert.equal(
-      value,
-      'bar'
-    );
-  } finally {
-    backend.clear();
-  }
-});
+    try {
+      service.write('foo', 'bar');
 
-test('backend can be wiped clean', function(assert) {
-  let service = this.subject();
-  let backend = service.get('backend');
+      let value = service.read('foo');
 
-  try {
-    service.write('foo', 'bar');
+      assert.equal(
+        value,
+        'bar'
+      );
+    } finally {
+      backend.clear();
+    }
+  });
 
-    service.clear();
+  test('backend can be wiped clean', function(assert) {
+    let service = this.owner.lookup('service:storage');
+    let backend = service.get('backend');
 
-    let value = service.read('foo');
+    try {
+      service.write('foo', 'bar');
 
-    assert.equal(
-      value,
-      null
-    );
-  } finally {
-    backend.clear();
-  }
-});
+      service.clear();
 
-test('backend can delete key', function(assert) {
-  let service = this.subject();
-  let backend = service.get('backend');
+      let value = service.read('foo');
 
-  try {
-    service.write('foo', 'bar');
+      assert.equal(
+        value,
+        null
+      );
+    } finally {
+      backend.clear();
+    }
+  });
 
-    service.del('foo');
+  test('backend can delete key', function(assert) {
+    let service = this.owner.lookup('service:storage');
+    let backend = service.get('backend');
 
-    let value = service.read('foo');
+    try {
+      service.write('foo', 'bar');
 
-    assert.equal(
-      value,
-      null
-    );
-  } finally {
-    backend.clear();
-  }
+      service.del('foo');
+
+      let value = service.read('foo');
+
+      assert.equal(
+        value,
+        null
+      );
+    } finally {
+      backend.clear();
+    }
+  });
 });

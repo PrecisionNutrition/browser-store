@@ -10,6 +10,6 @@ module('Acceptance | smoke test', function(hooks) {
 
     let element = find('[data-test-selector="smoke-test"]');
 
-    assert.equal(element.textContent.trim(), 'it works');
+    assert.dom(element).hasText('it works');
   });
 });
