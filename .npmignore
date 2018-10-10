@@ -7,11 +7,14 @@
 
 # misc
 /.bowerrc
+/.circleci/
 /.editorconfig
 /.ember-cli
 /.eslintignore
 /.eslintrc.js
 /.gitignore
+/.nvmrc
+/.template-lintrc.js
 /.watchmanconfig
 /.travis.yml
 /bower.json
