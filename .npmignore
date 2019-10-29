@@ -10,8 +10,10 @@
 /.circleci/
 /.editorconfig
 /.ember-cli
+/.env*
 /.eslintignore
 /.eslintrc.js
+/.git/
 /.gitignore
 /.nvmrc
 /.template-lintrc.js
@@ -19,6 +21,7 @@
 /.travis.yml
 /bower.json
 /config/ember-try.js
+/CONTRIBUTING.md
 /ember-cli-build.js
 /testem.js
 /tests/
