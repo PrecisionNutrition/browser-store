@@ -809,6 +809,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@precision-nutrition/eslint-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@precision-nutrition/eslint-config/-/eslint-config-1.1.0.tgz#7f424657d92995c344e0f94741a5928168ad2faa"
+  integrity sha512-1pf4E0Y2539id0qzLlemmZbFdxevuGmGJEg8RetDrVbGbR1l3YVrFHqafh4EIvLdki6kf1vvKhdzu8esnKRllg==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
