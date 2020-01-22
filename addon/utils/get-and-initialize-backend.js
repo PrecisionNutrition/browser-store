@@ -1,12 +1,18 @@
 import InMemoryBackend from '../backends/in-memory';
 import BrowserBackend from '../backends/browser';
 
-export default function getAndInitializeBackend() {
+/**
+ * @private
+ *
+ * @param {object=} storage - Used only for dependency injection. Do not use
+ *   this parameter.
+ */
+export default function getAndInitializeBackend(storage = window.localStorage) {
   try {
     const tempKey = '$$$test$$$';
 
-    localStorage.setItem(tempKey, 'bar');
-    localStorage.removeItem(tempKey);
+    storage.setItem(tempKey, 'bar');
+    storage.removeItem(tempKey);
 
     return new BrowserBackend();
   } catch (_) {
