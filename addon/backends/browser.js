@@ -8,19 +8,7 @@ export default class Browser {
   }
 
   getItem(key) {
-    let oldAmplifyItemKey = `__amplify__${key}`;
-    let item = this._store.getItem(oldAmplifyItemKey);
-
-    if (item) {
-      let { data } = JSON.parse(item);
-
-      this.removeItem(oldAmplifyItemKey);
-      this.setItem(key, data);
-
-      return data;
-    } else {
-      return this._store.getItem(key);
-    }
+    return this._store.getItem(key);
   }
 
   removeItem(key) {

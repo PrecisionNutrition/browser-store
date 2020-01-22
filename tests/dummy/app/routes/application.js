@@ -2,12 +2,12 @@ import Route from '@ember/routing/route';
 
 import { inject as service } from '@ember/service';
 
-export default Route.extend({
-  storage: service(),
+export default class ApplicationRoute extends Route {
+  @service storage;
 
   setupController() {
-    this._super(...arguments);
+    super.setupController(...arguments);
 
-    this.get('storage').write('test', 'it works');
-  },
-});
+    this.storage.write('test', 'it works');
+  }
+}

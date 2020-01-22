@@ -34,37 +34,6 @@ module('Unit | Backends | Browser', function(hooks) {
     );
   });
 
-  test('retrieving an item previously stored by amplify', function(assert) {
-    let subject = new Browser();
-    let key = 'foo';
-    let storedValue = 'bar';
-
-    window.localStorage.setItem(`__amplify__${key}`, JSON.stringify({ data: storedValue }));
-
-    let value = subject.getItem(key);
-
-    assert.equal(
-      value,
-      storedValue,
-      'retrieves the value previously stored by amplify'
-    );
-
-    let valueAtOldKey = window.localStorage.getItem(`__amplify__${key}`);
-
-    assert.notOk(
-      valueAtOldKey,
-      'destroys the value at the old amplify key'
-    );
-
-    let valueAtNewKey = window.localStorage.getItem(key);
-
-    assert.equal(
-      valueAtNewKey,
-      storedValue,
-      'stores the value at the new key'
-    );
-  });
-
   test('removeItem', function(assert) {
     let subject = new Browser();
 

@@ -4,28 +4,25 @@ import { setupTest } from 'ember-qunit';
 module('Unit | Service | storage', function(hooks) {
   setupTest(hooks);
 
-  test('backend is initialized', function(assert) {
-    let service = this.owner.lookup('service:storage');
+  hooks.beforeEach(function() {
+    this.service = this.owner.lookup('service:storage');
+  });
 
-    assert.ok(
-      !!service.get('backend'),
-    );
+  test('backend is initialized', function(assert) {
+    assert.ok(!!this.service.backend);
   });
 
   test('backend cannot be written to', function(assert) {
-    let service = this.owner.lookup('service:storage');
-
-    assert.throws(function() {
-      service.set('backend', 'foo');
+    assert.throws(() => {
+      this.service.set('backend', 'foo');
     });
   });
 
   test('backend can be written to', function(assert) {
-    let service = this.owner.lookup('service:storage');
-    let backend = service.get('backend');
+    let backend = this.service.backend;
 
     try {
-      service.write('foo', 'bar');
+      this.service.write('foo', 'bar');
 
       assert.equal(
         backend.getItem('foo'),
@@ -37,13 +34,12 @@ module('Unit | Service | storage', function(hooks) {
   });
 
   test('backend can be read from', function(assert) {
-    let service = this.owner.lookup('service:storage');
-    let backend = service.get('backend');
+    let backend = this.service.backend;
 
     try {
-      service.write('foo', 'bar');
+      this.service.write('foo', 'bar');
 
-      let value = service.read('foo');
+      let value = this.service.read('foo');
 
       assert.equal(
         value,
@@ -55,15 +51,14 @@ module('Unit | Service | storage', function(hooks) {
   });
 
   test('backend can be wiped clean', function(assert) {
-    let service = this.owner.lookup('service:storage');
-    let backend = service.get('backend');
+    let backend = this.service.backend;
 
     try {
-      service.write('foo', 'bar');
+      this.service.write('foo', 'bar');
 
-      service.clear();
+      this.service.clear();
 
-      let value = service.read('foo');
+      let value = this.service.read('foo');
 
       assert.equal(
         value,
@@ -75,15 +70,14 @@ module('Unit | Service | storage', function(hooks) {
   });
 
   test('backend can delete key', function(assert) {
-    let service = this.owner.lookup('service:storage');
-    let backend = service.get('backend');
+    let backend = this.service.backend;
 
     try {
-      service.write('foo', 'bar');
+      this.service.write('foo', 'bar');
 
-      service.del('foo');
+      this.service.del('foo');
 
-      let value = service.read('foo');
+      let value = this.service.read('foo');
 
       assert.equal(
         value,

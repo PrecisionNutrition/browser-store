@@ -2,12 +2,10 @@ import Controller from '@ember/controller';
 
 import { inject as service } from '@ember/service';
 
-import { computed } from '@ember/object';
+export default class ApplicationController extends Controller {
+  @service storage;
 
-export default Controller.extend({
-  storage: service(),
-
-  storedValue: computed(function() {
-    return this.get('storage').read('test');
-  }),
-});
+  get storedValue() {
+    return this.storage.read('test');
+  }
+}
