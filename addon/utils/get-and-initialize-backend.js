@@ -1,5 +1,6 @@
 import InMemoryBackend from '../backends/in-memory';
 import BrowserBackend from '../backends/browser';
+import isStorageAvailable from './is-storage-available';
 
 /**
  * @private
@@ -8,14 +9,9 @@ import BrowserBackend from '../backends/browser';
  *   this parameter.
  */
 export default function getAndInitializeBackend(storage = window.localStorage) {
-  try {
-    const tempKey = '$$$test$$$';
-
-    storage.setItem(tempKey, 'bar');
-    storage.removeItem(tempKey);
-
+  if (isStorageAvailable(storage)) {
     return new BrowserBackend();
-  } catch (_) {
+  } else {
     return new InMemoryBackend();
   }
 }

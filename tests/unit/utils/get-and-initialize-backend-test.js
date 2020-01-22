@@ -7,9 +7,6 @@ class FakeStorage {
   setItem() {
     throw 'quota exceeded, like in old Private Safari';
   }
-
-  removeItem() {
-  }
 }
 
 module('Unit | Utility | get and initialize backend', function() {

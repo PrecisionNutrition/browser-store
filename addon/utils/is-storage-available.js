@@ -1,0 +1,24 @@
+// See https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+export default function isStorageAvailable(storage) {
+  try {
+    const tempKey = '$$$test$$$';
+
+    storage.setItem(tempKey, 'bar');
+    storage.removeItem(tempKey);
+
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED'
+    ) &&
+    // acknowledge QuotaExceededError only if there's something already stored
+    (storage && storage.length !== 0);
+  }
+}
