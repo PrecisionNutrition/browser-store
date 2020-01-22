@@ -1,25 +1,24 @@
-import { computed } from '@ember/object';
 import Service from '@ember/service';
 import getAndInitializeBackend from '../utils/get-and-initialize-backend';
 
-export default Service.extend({
-  backend: computed(function() {
+export default class Storage extends Service {
+  get backend() {
     return getAndInitializeBackend();
-  }).readOnly(),
+  }
 
   write(key, value) {
-    this.get('backend').setItem(key, value);
-  },
+    this.backend.setItem(key, value);
+  }
 
   read(key) {
-    return this.get('backend').getItem(key);
-  },
+    return this.backend.getItem(key);
+  }
 
   del(key) {
-    return this.get('backend').removeItem(key);
-  },
+    return this.backend.removeItem(key);
+  }
 
   clear() {
-    this.get('backend').clear();
-  },
-});
+    this.backend.clear();
+  }
+}
