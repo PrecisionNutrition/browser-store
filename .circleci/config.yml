@@ -66,6 +66,10 @@ jobs:
           name: 'Run JS Lint'
           command: yarn run lint:js
 
+      - run:
+          name: 'Run HBS Lint'
+          command: yarn run lint:hbs
+
   run_default_tests:
     <<: *defaults
 
@@ -98,21 +102,9 @@ jobs:
           at: .
 
       - run:
-          name: 'Run Tests for Ember 3.4'
+          name: 'Run Tests for Ember 3.12'
           command: |
-            ./node_modules/ember-cli/bin/ember try:one ember-lts-3.4 --skip-cleanup
-
-  run_slightly_less_antique_tests:
-    <<: *defaults
-
-    steps:
-      - attach_workspace:
-          at: .
-
-      - run:
-          name: 'Run Tests for Ember 3.8'
-          command: |
-            ./node_modules/ember-cli/bin/ember try:one ember-lts-3.8 --skip-cleanup
+            ./node_modules/ember-cli/bin/ember try:one ember-lts-3.12 --skip-cleanup
 
   run_beta_tests:
     <<: *defaults
@@ -150,6 +142,18 @@ jobs:
           command: |
             yarn ember try:one ember-default-with-jquery --skip-cleanup
 
+  run_classic_tests:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: 'Run Tests for Ember Classic'
+          command: |
+            yarn ember try:one ember-classic --skip-cleanup
+
 workflows:
   version: 2
   test_and_deploy:
@@ -176,14 +180,18 @@ workflows:
           requires:
             - lint_project
 
-      - run_slightly_less_antique_tests:
-          requires:
-            - lint_project
-
       - run_beta_tests:
           requires:
             - lint_project
 
       - run_canary_tests:
+          requires:
+            - lint_project
+
+      - run_with_jquery_tests:
+          requires:
+            - lint_project
+
+      - run_classic_tests:
           requires:
             - lint_project
