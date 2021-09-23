@@ -140,8 +140,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ember-try-scenario:
-          [
+        ember-try-scenario: [
             ember-lts-3.24,
             ember-release,
             ember-beta,

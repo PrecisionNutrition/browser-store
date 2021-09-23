@@ -8,7 +8,9 @@ import isStorageAvailable from './is-storage-available';
  * @param {object=} storage - Used only for dependency injection. Do not use
  *   this parameter.
  */
-export default function getAndInitializeBackend(storage = window.localStorage) {
+export default function getAndInitializeBackend(
+  storage = window.localStorage
+): BrowserBackend | InMemoryBackend {
   if (isStorageAvailable(storage)) {
     return new BrowserBackend();
   } else {
