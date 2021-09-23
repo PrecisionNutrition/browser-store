@@ -1,39 +1,40 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Service | storage', function(hooks) {
+module('Unit | Service | storage', function (hooks) {
   setupTest(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.service = this.owner.lookup('service:storage');
   });
 
-  test('backend is initialized', function(assert) {
+  test('backend is initialized', function (assert) {
     assert.ok(!!this.service.backend);
   });
 
-  test('backend cannot be written to', function(assert) {
+  test('backend cannot be written to', function (assert) {
     assert.throws(() => {
       this.service.set('backend', 'foo');
     });
   });
 
-  test('backend can be written to', function(assert) {
+  test('backend can be written to', function (assert) {
+    assert.expect(1);
+
     let backend = this.service.backend;
 
     try {
       this.service.write('foo', 'bar');
 
-      assert.equal(
-        backend.getItem('foo'),
-        'bar'
-      );
+      assert.equal(backend.getItem('foo'), 'bar');
     } finally {
       backend.clear();
     }
   });
 
-  test('backend can be read from', function(assert) {
+  test('backend can be read from', function (assert) {
+    assert.expect(1);
+
     let backend = this.service.backend;
 
     try {
@@ -41,16 +42,15 @@ module('Unit | Service | storage', function(hooks) {
 
       let value = this.service.read('foo');
 
-      assert.equal(
-        value,
-        'bar'
-      );
+      assert.equal(value, 'bar');
     } finally {
       backend.clear();
     }
   });
 
-  test('backend can be wiped clean', function(assert) {
+  test('backend can be wiped clean', function (assert) {
+    assert.expect(1);
+
     let backend = this.service.backend;
 
     try {
@@ -60,16 +60,15 @@ module('Unit | Service | storage', function(hooks) {
 
       let value = this.service.read('foo');
 
-      assert.equal(
-        value,
-        null
-      );
+      assert.equal(value, null);
     } finally {
       backend.clear();
     }
   });
 
-  test('backend can delete key', function(assert) {
+  test('backend can delete key', function (assert) {
+    assert.expect(1);
+
     let backend = this.service.backend;
 
     try {
@@ -79,10 +78,7 @@ module('Unit | Service | storage', function(hooks) {
 
       let value = this.service.read('foo');
 
-      assert.equal(
-        value,
-        null
-      );
+      assert.equal(value, null);
     } finally {
       backend.clear();
     }

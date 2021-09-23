@@ -9,24 +9,18 @@ class FakeStorage {
   }
 }
 
-module('Unit | Utility | get and initialize backend', function() {
-  test('when setting to local storage works', function(assert) {
+module('Unit | Utility | get and initialize backend', function () {
+  test('when setting to local storage works', function (assert) {
     const backend = getAndInitializeBackend();
 
-    assert.ok(
-      backend instanceof BrowserBackend,
-      'is the browser backend proxy'
-    );
+    assert.ok(backend instanceof BrowserBackend, 'is the browser backend proxy');
   });
 
-  test('when setting to local storage throws', function(assert) {
+  test('when setting to local storage throws', function (assert) {
     const storage = new FakeStorage();
 
     const backend = getAndInitializeBackend(storage);
 
-    assert.ok(
-      backend instanceof InMemoryBackend,
-      'uses in-memory backend'
-    );
+    assert.ok(backend instanceof InMemoryBackend, 'uses in-memory backend');
   });
 });

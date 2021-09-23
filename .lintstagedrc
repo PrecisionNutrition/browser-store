@@ -1,0 +1,8 @@
+{
+  "*.{js,ts}": [
+    "eslint --cache --fix",
+    "prettier --write"
+  ],
+  "*.hbs": "ember-template-lint --update-todo --fix",
+  "*.{html,json,md,yml}": "prettier --write"
+}

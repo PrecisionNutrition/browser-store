@@ -7,15 +7,16 @@
 
 # misc
 /.bowerrc
-/.circleci/
 /.editorconfig
 /.ember-cli
 /.env*
+/.eslintcache
 /.eslintignore
 /.eslintrc.js
 /.git/
 /.gitignore
-/.nvmrc
+/.prettierignore
+/.prettierrc.js
 /.template-lintrc.js
 /.watchmanconfig
 /.travis.yml
@@ -25,7 +26,7 @@
 /ember-cli-build.js
 /testem.js
 /tests/
-/package-lock.json
+/yarn-error.log
 /yarn.lock
 .gitkeep
 
