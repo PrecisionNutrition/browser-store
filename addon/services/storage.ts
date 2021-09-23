@@ -1,10 +1,11 @@
 import Service from '@ember/service';
 import getAndInitializeBackend from '../utils/get-and-initialize-backend';
+import type { Backend } from '../backends/backend';
 
 export default class Storage extends Service {
-  #backend = getAndInitializeBackend();
+  #backend: Backend = getAndInitializeBackend();
 
-  get backend() {
+  get backend(): Backend {
     return this.#backend;
   }
 
