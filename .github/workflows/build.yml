@@ -80,18 +80,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-
 
-      - uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Install Dependencies
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
         if: |
           steps.cache-dependencies.outputs.cache-hit != 'true'
 
@@ -135,18 +125,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-
 
-      - uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Install Dependencies
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-
-          yarn install --no-lockfile --non-interactive
+        run: yarn install --no-lockfile --non-interactive
 
       - name: Test
         run: yarn test:ember --launch ${{ matrix.browser }}
@@ -196,18 +176,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-
 
-      - uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Install Dependencies
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
         if: |
           steps.cache-dependencies.outputs.cache-hit != 'true'
 
@@ -215,10 +185,7 @@ jobs:
         env:
           EMBER_TRY_SCENARIO: ${{ matrix.ember-try-scenario }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-          node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+        run: node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
 
   # "Group" individual statuses into a pseudo-status that we can use for bors to watch for.
   ci-finished:
