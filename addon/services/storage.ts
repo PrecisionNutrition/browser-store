@@ -25,3 +25,10 @@ export default class Storage extends Service {
     this.backend.clear();
   }
 }
+
+// DO NOT DELETE: this is how TypeScript knows how to look up your services.
+declare module '@ember/service' {
+  interface Registry {
+    storage: Storage;
+  }
+}
