@@ -9,19 +9,19 @@ export default class Storage extends Service {
     return this.#backend;
   }
 
-  write(key: string, value: string): ReturnType<typeof this.backend.setItem> {
+  write(key: string, value: string): void {
     this.backend.setItem(key, value);
   }
 
-  read(key: string): ReturnType<typeof this.backend.getItem> {
+  read(key: string): string | null {
     return this.backend.getItem(key);
   }
 
-  del(key: string): ReturnType<typeof this.backend.removeItem> {
+  del(key: string): void {
     return this.backend.removeItem(key);
   }
 
-  clear(): ReturnType<typeof this.backend.clear> {
+  clear(): void {
     this.backend.clear();
   }
 }
